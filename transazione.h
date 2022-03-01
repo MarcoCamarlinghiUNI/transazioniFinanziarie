@@ -1,0 +1,11 @@
+#ifndef TRANSAZIONIFINANZIARIE_TRANSAZIONE_H
+#define TRANSAZIONIFINANZIARIE_TRANSAZIONE_H
+
+
+class transazione {
+    private:
+        int importo;
+};
+
+
+#endif //TRANSAZIONIFINANZIARIE_TRANSAZIONE_H
