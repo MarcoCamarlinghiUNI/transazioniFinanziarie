@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/acquisto.cpp
+acquisto.h
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/acquisto.h
+
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/acquisto.h
+string
+-
+transazione.h
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/transazione.h
+
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/bonifico.cpp
+bonifico.h
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/bonifico.h
+
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/bonifico.h
+string
+-
+transazione.h
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/transazione.h
+
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/transazione.cpp
+transazione.h
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/transazione.h
+
+C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/transazione.h
+
