@@ -5,9 +5,13 @@
 #include <string>
 #include "transazione.h"
 
-class acquisto : public transazione{
+class acquisto final : public transazione{
+public:
+    acquisto(int importo, const std::string &esercente);
+
 private:
     std::string esercente;
+    bool acquistoOnlineFlag;
 };
 
 

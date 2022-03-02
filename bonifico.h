@@ -5,9 +5,13 @@
 #include <string>
 #include "transazione.h"
 
-class bonifico : public transazione{
+class bonifico final : public transazione{
+public:
+    bonifico(int importo, const std::string &causale, bool bonificoInEntrataFlag);
+
 private:
     std::string causale;
+    bool bonificoInEntrataFlag{};
 
 };
 

@@ -3,8 +3,14 @@
 
 
 class transazione {
-    private:
-        int importo;
+public:
+    explicit transazione(int importo);
+    virtual ~transazione() {}
+
+    virtual transazione* crea() const = 0;
+
+private:
+    int importo;
 };
 
 
