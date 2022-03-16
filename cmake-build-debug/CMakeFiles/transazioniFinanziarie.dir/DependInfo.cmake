@@ -4,10 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/acquisto.cpp" "C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/cmake-build-debug/CMakeFiles/transazioniFinanziarie.dir/acquisto.cpp.obj"
-  "C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/bonifico.cpp" "C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/cmake-build-debug/CMakeFiles/transazioniFinanziarie.dir/bonifico.cpp.obj"
-  "C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/main.cpp" "C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/cmake-build-debug/CMakeFiles/transazioniFinanziarie.dir/main.cpp.obj"
-  "C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/transazione.cpp" "C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/cmake-build-debug/CMakeFiles/transazioniFinanziarie.dir/transazione.cpp.obj"
+  "C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/main.cpp" "C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/cmake-build-debug/CMakeFiles/transazioniFinanziarie.dir/main.cpp.obj"
+  "C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.cpp" "C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/cmake-build-debug/CMakeFiles/transazioniFinanziarie.dir/transazione.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

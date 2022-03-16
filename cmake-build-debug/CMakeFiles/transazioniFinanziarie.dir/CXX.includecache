@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/acquisto.cpp
-acquisto.h
-C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/acquisto.h
-
-C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/acquisto.h
-string
+C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/main.cpp
+iostream
 -
 transazione.h
-C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/transazione.h
+C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.h
 
-C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/transazione.h
+C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.cpp
+transazione.h
+C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.h
+
+C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.h
 

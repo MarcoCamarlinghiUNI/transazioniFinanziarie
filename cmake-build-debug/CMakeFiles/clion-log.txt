@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\marco\Desktop\Laboratorio di Programmazione\codiceSerio\transazioniFinanziarie"
+"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/marco/Desktop/Laboratorio di Programmazione/codiceSerio/transazioniFinanziarie/cmake-build-debug
+-- Build files have been written to: C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/cmake-build-debug

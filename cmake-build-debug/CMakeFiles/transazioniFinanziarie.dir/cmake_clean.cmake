@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/transazioniFinanziarie.dir/acquisto.cpp.obj"
-  "CMakeFiles/transazioniFinanziarie.dir/bonifico.cpp.obj"
   "CMakeFiles/transazioniFinanziarie.dir/main.cpp.obj"
   "CMakeFiles/transazioniFinanziarie.dir/transazione.cpp.obj"
   "libtransazioniFinanziarie.dll.a"

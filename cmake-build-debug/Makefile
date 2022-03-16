@@ -67,10 +67,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\marco\Desktop\Laboratorio di Programmazione\codiceSerio\transazioniFinanziarie"
+CMAKE_SOURCE_DIR = C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\marco\Desktop\Laboratorio di Programmazione\codiceSerio\transazioniFinanziarie\cmake-build-debug"
+CMAKE_BINARY_DIR = C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\marco\Desktop\Laboratorio di Programmazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles" "C:\Users\marco\Desktop\Laboratorio di Programmazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\marco\Desktop\Laboratorio di Programmazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -141,60 +141,6 @@ transazioniFinanziarie: cmake_check_build_system
 transazioniFinanziarie/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/build
 .PHONY : transazioniFinanziarie/fast
-
-acquisto.obj: acquisto.cpp.obj
-
-.PHONY : acquisto.obj
-
-# target to build an object file
-acquisto.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/acquisto.cpp.obj
-.PHONY : acquisto.cpp.obj
-
-acquisto.i: acquisto.cpp.i
-
-.PHONY : acquisto.i
-
-# target to preprocess a source file
-acquisto.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/acquisto.cpp.i
-.PHONY : acquisto.cpp.i
-
-acquisto.s: acquisto.cpp.s
-
-.PHONY : acquisto.s
-
-# target to generate assembly for a file
-acquisto.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/acquisto.cpp.s
-.PHONY : acquisto.cpp.s
-
-bonifico.obj: bonifico.cpp.obj
-
-.PHONY : bonifico.obj
-
-# target to build an object file
-bonifico.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/bonifico.cpp.obj
-.PHONY : bonifico.cpp.obj
-
-bonifico.i: bonifico.cpp.i
-
-.PHONY : bonifico.i
-
-# target to preprocess a source file
-bonifico.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/bonifico.cpp.i
-.PHONY : bonifico.cpp.i
-
-bonifico.s: bonifico.cpp.s
-
-.PHONY : bonifico.s
-
-# target to generate assembly for a file
-bonifico.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/bonifico.cpp.s
-.PHONY : bonifico.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -259,12 +205,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... transazioniFinanziarie
-	@echo ... acquisto.obj
-	@echo ... acquisto.i
-	@echo ... acquisto.s
-	@echo ... bonifico.obj
-	@echo ... bonifico.i
-	@echo ... bonifico.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

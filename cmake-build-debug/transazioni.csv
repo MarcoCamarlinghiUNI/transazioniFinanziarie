@@ -1,2 +1,13 @@
-interessato, bonificoFlag, bonificoInEntrataFlag, importo
-MarcoCamarlinghi, 0, 0, 500
+
+
+bonificoflag, interessato, bonificoInEntrataFlag, importo, causale
+
+1,MarcoCamarlinghi, 0, 500, Moto
+
+
+
+
+
+bonificoFlag, esercente, acquistoOnlineFlag, importo
+
+0, PasticceriaBarattaAntonio, 0, 
