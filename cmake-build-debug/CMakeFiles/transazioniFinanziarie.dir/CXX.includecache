@@ -9,12 +9,20 @@
 C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/main.cpp
 iostream
 -
+fstream
+-
+string
+-
+vector
+-
+sstream
+-
 transazione.h
 C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.h
 
-C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.cpp
-transazione.h
 C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.h
-
-C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.h
+string
+-
+ctime
+-
 

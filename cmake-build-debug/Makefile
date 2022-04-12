@@ -142,6 +142,33 @@ transazioniFinanziarie/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/build
 .PHONY : transazioniFinanziarie/fast
 
+conto.obj: conto.cpp.obj
+
+.PHONY : conto.obj
+
+# target to build an object file
+conto.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/conto.cpp.obj
+.PHONY : conto.cpp.obj
+
+conto.i: conto.cpp.i
+
+.PHONY : conto.i
+
+# target to preprocess a source file
+conto.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/conto.cpp.i
+.PHONY : conto.cpp.i
+
+conto.s: conto.cpp.s
+
+.PHONY : conto.s
+
+# target to generate assembly for a file
+conto.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/conto.cpp.s
+.PHONY : conto.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -205,6 +232,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... transazioniFinanziarie
+	@echo ... conto.obj
+	@echo ... conto.i
+	@echo ... conto.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

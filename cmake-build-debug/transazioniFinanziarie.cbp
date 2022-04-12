@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/conto.cpp">
+			<Option target="transazioniFinanziarie"/>
+		</Unit>
+		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/conto.h">
+			<Option target="transazioniFinanziarie"/>
+		</Unit>
 		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/main.cpp">
 			<Option target="transazioniFinanziarie"/>
 		</Unit>
