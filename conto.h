@@ -10,8 +10,14 @@
 using namespace std;
 
 class conto {
-private:
-    unsigned int idConto;
+public:
+    explicit conto(int id, string dataAperturaz, string titolarez);
+    virtual ~conto() {}
+
+    tm convertiStringInData(string s);
+
+//private:
+    int idConto;
     tm dataApertura;
     string titolare;
 

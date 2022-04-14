@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include "transazione.h"
+#include "conto.h"
 
 int main() {
     transazione* a;
@@ -37,9 +38,18 @@ int main() {
         for(int j=0;j<content[i].size();j++)
         {
             cout<<content[i][j]<<" ";
+
         }
         cout<<"\n";
     }
+
+    cout<<content[0][0]<<" ";
+    cout<<content[1][1]<<" ";
+    cout<<content[2][2]<<" ";
+
+    conto c (stoi(content[0][0]), content[0][1], content[0][1]);
+
+    cout<<c.dataApertura.tm_year<<" ";
 
     return 0;
 }
