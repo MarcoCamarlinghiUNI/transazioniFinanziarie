@@ -1,1 +1,1 @@
-idTransazione, importo, controparte, dataContabile, dataConciliazione, transazioneInUscitaFlag, transazioneConciliataFlag, 
+idTransazione, importo, controparte, dataContabile, transazioneInUscitaFlag, transazioneConciliataFlag,

@@ -12,8 +12,9 @@ using namespace std;
 class conto {
 public:
     explicit conto(int id, string dataAperturaz, string titolarez);
-    virtual ~conto() {}
+    virtual ~conto() = default;
 
+    vector<transazione*> letturaTransazioni(int idContoz);
     tm convertiStringInData(string s);
 
 //private:
@@ -21,6 +22,7 @@ public:
     tm dataApertura;
     string titolare;
 
+    vector<transazione*> listaTransazioni;
     unsigned int prossimoIdTransazione;
 };
 

@@ -1,55 +1,84 @@
 #include <iostream>
-#include <fstream>
+//#include <fstream>
 #include <string>
 #include <vector>
 #include <sstream>
-#include "transazione.h"
+//#include "transazione.h"
 #include "conto.h"
 
 int main() {
-    transazione* a;
 
-    string fname;
-    fname = "listaConti.csv";
+    string listaContiNomeFile;
+    listaContiNomeFile = "listaConti.csv";
 
-    vector<vector<string>> content;
-    vector<string> row;
-    string line, word;
+    vector<vector<string>> listaContiVettore;
+    vector<string> listaContiRow;
+    string listaContiLine, listaContiWord;
 
-    fstream file (fname, ios::in);
-    if(file.is_open())
+    fstream listaContiFile (listaContiNomeFile, ios::in);
+    if(listaContiFile.is_open())
     {
-        while(getline(file, line))
+        while(getline(listaContiFile, listaContiLine))
         {
-            row.clear();
+            listaContiRow.clear();
 
-            stringstream str(line);
+            stringstream str(listaContiLine);
 
-            while(getline(str, word, ','))
-                row.push_back(word);
-            content.push_back(row);
+            while(getline(str, listaContiWord, ','))
+                listaContiRow.push_back(listaContiWord);
+            listaContiVettore.push_back(listaContiRow);
         }
     }
     else
         cout<<"Could not open the file\n";
 
-    for(int i=0;i<content.size();i++)
+    for(auto & i : listaContiVettore)
     {
-        for(int j=0;j<content[i].size();j++)
+        for(auto & j : i)
         {
-            cout<<content[i][j]<<" ";
-
+            cout<<j<<" ";
         }
         cout<<"\n";
     }
 
-    cout<<content[0][0]<<" ";
-    cout<<content[1][1]<<" ";
-    cout<<content[2][2]<<" ";
 
-    conto c (stoi(content[0][0]), content[0][1], content[0][1]);
+    conto c1 (stoi(listaContiVettore[0][0]), listaContiVettore[0][1], listaContiVettore[0][2]);
+    conto c2 (stoi(listaContiVettore[1][0]), listaContiVettore[1][1], listaContiVettore[2][2]);
+    conto c3 (stoi(listaContiVettore[2][0]), listaContiVettore[2][1], listaContiVettore[2][2]);
 
-    cout<<c.dataApertura.tm_year<<" ";
 
+    string contoDaVisualizzareNomeFile;
+    contoDaVisualizzareNomeFile.append(to_string(c2.idConto));
+    contoDaVisualizzareNomeFile.append(".csv");
+
+    vector<vector<string>> contoDaVisualizzareVettore;
+    vector<string> contoDaVisualizzareRow;
+    string contoDaVisualizzareLine, contoDaVisualizzareWord;
+
+    fstream contoDaVisualizzareFile (contoDaVisualizzareNomeFile, ios::in);
+    if(listaContiFile.is_open())
+    {
+        while(getline(contoDaVisualizzareFile, contoDaVisualizzareLine))
+        {
+            contoDaVisualizzareRow.clear();
+
+            stringstream str(contoDaVisualizzareLine);
+
+            while(getline(str, contoDaVisualizzareWord, ','))
+                contoDaVisualizzareRow.push_back(contoDaVisualizzareWord);
+            contoDaVisualizzareVettore.push_back(contoDaVisualizzareRow);
+        }
+    }
+    else
+        cout<<"Could not open the file\n";
+
+    for(auto & i : contoDaVisualizzareVettore)
+    {
+        for(auto & j : i)
+        {
+            cout<<j<<" ";
+        }
+        cout<<"\n";
+    }
     return 0;
 }

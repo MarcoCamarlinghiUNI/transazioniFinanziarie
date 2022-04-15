@@ -1,1 +1,6 @@
-idTransazione, importo, controparte, dataContabile, dataConciliazione, transazioneInUscitaFlag, transazioneConciliataFlag, 
+1,50,BarattaAntonio,11-04-2022,1,0,
+2,21,BarattaAntonio,12-04-2022,1,0,
+3,54,BarattaAntonio,13-04-2022,1,0,
+4,66,BarattaAntonio,14-04-2022,1,0,
+5,86,BarattaAntonio,15-04-2022,1,0,
+5,11,BarattaAntonio,16-04-2022,1,0,

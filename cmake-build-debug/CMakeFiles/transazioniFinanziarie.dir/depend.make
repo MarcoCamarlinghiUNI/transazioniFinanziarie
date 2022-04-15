@@ -5,6 +5,7 @@ CMakeFiles/transazioniFinanziarie.dir/conto.cpp.obj: ../conto.cpp
 CMakeFiles/transazioniFinanziarie.dir/conto.cpp.obj: ../conto.h
 CMakeFiles/transazioniFinanziarie.dir/conto.cpp.obj: ../transazione.h
 
+CMakeFiles/transazioniFinanziarie.dir/main.cpp.obj: ../conto.h
 CMakeFiles/transazioniFinanziarie.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/transazioniFinanziarie.dir/main.cpp.obj: ../transazione.h
 
