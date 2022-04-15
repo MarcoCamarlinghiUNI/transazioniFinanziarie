@@ -42,3 +42,7 @@ tm transazione::convertiStringInData(string s) {
 void transazione::conciliaTransazione(transazione t) {
     t.transazioneConciliataFlag = true;
 }
+
+transazione::transazione() {
+
+}

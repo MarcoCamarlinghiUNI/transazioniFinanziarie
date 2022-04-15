@@ -9,15 +9,16 @@ using namespace std;
 
 class transazione {
 public:
+    transazione();
+
     explicit transazione(int idTransazionez, int importoz, string contropartez, string dataContabilez,
                          string transazioneInUscitaFlagz, string transazioneConciliataFlagz);
     virtual ~transazione() = default;
 
     tm convertiStringInData(string s);
-    //virtual transazione* crea() const = 0;
     void conciliaTransazione(transazione t);
 
-private:
+//private:
     int idTransazione;
     int importo;
     string controparte;         // chi riceve o invia il denaro

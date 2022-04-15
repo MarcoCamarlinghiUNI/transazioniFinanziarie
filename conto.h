@@ -14,16 +14,20 @@ public:
     explicit conto(int id, string dataAperturaz, string titolarez);
     virtual ~conto() = default;
 
-    vector<transazione*> letturaTransazioni(int idContoz);
+    vector<const transazione*> letturaTransazioni(int idContoz);
     tm convertiStringInData(string s);
+    int trovaProssimoIdTransazione ();
+
+    const transazione* aggiungiTransazione(int importoz, string contropartez, string transazioneInUscitaFlagz);
+    void eliminaTransazione(int idTransazioneDaEliminare);
 
 //private:
     int idConto;
     tm dataApertura;
     string titolare;
 
-    vector<transazione*> listaTransazioni;
-    unsigned int prossimoIdTransazione;
+    vector<const transazione*> listaTransazioni;
+    int prossimoIdTransazione;
 };
 
 
