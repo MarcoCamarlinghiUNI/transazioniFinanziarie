@@ -39,8 +39,8 @@ tm transazione::convertiStringInData(string s) {
     return data;
 }
 
-void transazione::conciliaTransazione(transazione t) {
-    t.transazioneConciliataFlag = true;
+void transazione::setTransazioneConciliataFlag(transazione* t, bool b) {
+    t->transazioneConciliataFlag = b;
 }
 
 transazione::transazione() {

@@ -16,7 +16,7 @@ public:
     virtual ~transazione() = default;
 
     tm convertiStringInData(string s);
-    void conciliaTransazione(transazione t);
+    static void setTransazioneConciliataFlag(transazione* t, bool b);
 
 //private:
     int idTransazione;

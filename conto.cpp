@@ -27,8 +27,8 @@ tm conto::convertiStringInData(string s) {
     return data;
 }
 
-vector<const transazione*> conto::letturaTransazioni(int idContoz) {
-    vector<const transazione*> v;
+vector<transazione*> conto::letturaTransazioni(int idContoz) {
+    vector<transazione*> v;
 
     string contoDaVisualizzareNomeFile;
     contoDaVisualizzareNomeFile.append(to_string(idContoz));
@@ -56,10 +56,13 @@ vector<const transazione*> conto::letturaTransazioni(int idContoz) {
                                     contoDaVisualizzareVettore[i][2], contoDaVisualizzareVettore[i][3],
                                     contoDaVisualizzareVettore[i][4], contoDaVisualizzareVettore[i][5]));
     }
+
+    contoDaVisualizzareFile.close();
+
     return v;
 }
 
-const transazione *conto::aggiungiTransazione(int importoz, string contropartez, string transazioneInUscitaFlagz) {
+transazione *conto::aggiungiTransazione(int importoz, string contropartez, string transazioneInUscitaFlagz) {
     transazione* t = new transazione;
     t->idTransazione = prossimoIdTransazione;
     t->importo = importoz;
@@ -79,6 +82,8 @@ const transazione *conto::aggiungiTransazione(int importoz, string contropartez,
 
     prossimoIdTransazione++;
     listaTransazioni.push_back(t);
+
+    aggiornaCSV();
     return listaTransazioni[listaTransazioni.size()-1];
 }
 
@@ -90,6 +95,8 @@ void conto::eliminaTransazione(int idTransazioneDaEliminare) {
             transazioneEliminata = true;
         }
     }
+
+    aggiornaCSV();
 
     if(!transazioneEliminata)
         cout<<"eccezione transazione non trovata?";
@@ -103,4 +110,37 @@ int conto::trovaProssimoIdTransazione() {
             prossimoId = i->idTransazione;
     }
     return prossimoId+1;
+}
+
+void conto::aggiornaCSV() {
+    // crea un csv con la lista delle transazioni
+    std::ofstream myfile;
+    myfile.open ("nuovoCSV.csv");
+    for ( int r=0; r<listaTransazioni.size(); r++){
+        myfile << listaTransazioni[r]->idTransazione<<",";
+        myfile << listaTransazioni[r]->importo<<",";
+        myfile << listaTransazioni[r]->controparte<<",";
+        myfile << listaTransazioni[r]->dataContabile.tm_mday<<"-";
+        myfile << listaTransazioni[r]->dataContabile.tm_mon<<"-";
+        myfile << listaTransazioni[r]->dataContabile.tm_year<<",";
+        myfile << listaTransazioni[r]->transazioneInUscitaFlag<<",";
+        myfile << listaTransazioni[r]->transazioneConciliataFlag<<",\n";
+
+    }
+    myfile.close();
+
+    // elimina il vecchio csv dello stesso conto
+    string nomeDelFile;
+    nomeDelFile.append(to_string(idConto));
+    nomeDelFile.append(".csv");
+    const char * nomeDelFileChar = nomeDelFile.c_str();
+    remove(nomeDelFileChar);
+
+    // rinomina il nuovv csv col nome di quello vecchio
+    rename("nuovoCSV.csv", nomeDelFileChar);
+}
+
+void conto::conciliaTransazione(transazione *t) {
+    transazione::setTransazioneConciliataFlag(t,true);
+    aggiornaCSV();
 }

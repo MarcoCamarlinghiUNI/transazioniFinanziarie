@@ -14,19 +14,22 @@ public:
     explicit conto(int id, string dataAperturaz, string titolarez);
     virtual ~conto() = default;
 
-    vector<const transazione*> letturaTransazioni(int idContoz);
-    tm convertiStringInData(string s);
+    vector<transazione*> letturaTransazioni(int idContoz);
     int trovaProssimoIdTransazione ();
+    tm convertiStringInData(string s);
 
-    const transazione* aggiungiTransazione(int importoz, string contropartez, string transazioneInUscitaFlagz);
+    transazione* aggiungiTransazione(int importoz, string contropartez, string transazioneInUscitaFlagz);
     void eliminaTransazione(int idTransazioneDaEliminare);
+    void conciliaTransazione(transazione* t);
+
+    void aggiornaCSV ();
 
 //private:
     int idConto;
     tm dataApertura;
     string titolare;
 
-    vector<const transazione*> listaTransazioni;
+    vector<transazione*> listaTransazioni;
     int prossimoIdTransazione;
 };
 

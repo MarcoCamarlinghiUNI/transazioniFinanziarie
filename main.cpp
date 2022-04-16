@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
-//#include "transazione.h"
+#include "transazione.h"
 #include "conto.h"
 
 int main() {
@@ -32,6 +32,8 @@ int main() {
     else
         cout<<"Could not open the file\n";
 
+    listaContiFile.close();
+
     for(auto & i : listaContiVettore)
     {
         for(auto & j : i)
@@ -47,39 +49,11 @@ int main() {
     conto c3 (stoi(listaContiVettore[2][0]), listaContiVettore[2][1], listaContiVettore[2][2]);
 
 
-    string contoDaVisualizzareNomeFile;
-    contoDaVisualizzareNomeFile.append(to_string(c2.idConto));
-    contoDaVisualizzareNomeFile.append(".csv");
 
-    vector<vector<string>> contoDaVisualizzareVettore;
-    vector<string> contoDaVisualizzareRow;
-    string contoDaVisualizzareLine, contoDaVisualizzareWord;
+    c2.conciliaTransazione(c2.listaTransazioni[2]);
 
-    fstream contoDaVisualizzareFile (contoDaVisualizzareNomeFile, ios::in);
-    if(listaContiFile.is_open())
-    {
-        while(getline(contoDaVisualizzareFile, contoDaVisualizzareLine))
-        {
-            contoDaVisualizzareRow.clear();
+    c2.aggiungiTransazione(10,"gelato","0");
 
-            stringstream str(contoDaVisualizzareLine);
-
-            while(getline(str, contoDaVisualizzareWord, ','))
-                contoDaVisualizzareRow.push_back(contoDaVisualizzareWord);
-            contoDaVisualizzareVettore.push_back(contoDaVisualizzareRow);
-        }
-    }
-    else
-        cout<<"Could not open the file\n";
-
-    for(auto & i : contoDaVisualizzareVettore)
-    {
-        for(auto & j : i)
-        {
-            cout<<j<<" ";
-        }
-        cout<<"\n";
-    }
 
 
     return 0;
