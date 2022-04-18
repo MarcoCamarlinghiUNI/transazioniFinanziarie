@@ -1,3 +1,3 @@
 "C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\transazioniFinanziarie.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\transazioniFinanziarie.dir/objects.a @CMakeFiles\transazioniFinanziarie.dir\objects1.rsp
-C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\transazioniFinanziarie.dir/objects.a -Wl,--no-whole-archive  -o transazioniFinanziarie.exe -Wl,--out-implib,libtransazioniFinanziarie.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\transazioniFinanziarie.dir\linklibs.rsp
+C:\mingw64\bin\ar.exe cr CMakeFiles\transazioniFinanziarie.dir/objects.a @CMakeFiles\transazioniFinanziarie.dir\objects1.rsp
+C:\mingw64\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\transazioniFinanziarie.dir/objects.a -Wl,--no-whole-archive  -o transazioniFinanziarie.exe -Wl,--out-implib,libtransazioniFinanziarie.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\transazioniFinanziarie.dir\linklibs.rsp
