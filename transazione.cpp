@@ -43,6 +43,4 @@ void transazione::setTransazioneConciliataFlag(transazione* t, bool b) {
     t->transazioneConciliataFlag = b;
 }
 
-transazione::transazione() {
-
-}
+transazione::transazione() {}

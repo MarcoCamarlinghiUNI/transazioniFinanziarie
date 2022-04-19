@@ -17,7 +17,7 @@ public:
     tm convertiStringInData(string s);
     static void setTransazioneConciliataFlag(transazione* t, bool b);
 
-//private:
+
     int idTransazione;
     int importo;
     string controparte;         // chi riceve o invia il denaro

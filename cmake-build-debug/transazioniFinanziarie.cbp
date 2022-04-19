@@ -411,9 +411,6 @@
 		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/main.cpp">
 			<Option target="transazioniFinanziarie"/>
 		</Unit>
-		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/test/contoTest.cpp">
-			<Option target="runTFtests"/>
-		</Unit>
 		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/test/lib/googletest/googlemock/src/gmock-all.cc">
 			<Option target="gmock"/>
 		</Unit>

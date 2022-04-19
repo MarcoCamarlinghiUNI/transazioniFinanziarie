@@ -42,9 +42,14 @@ TEST_F(testFixture, testEliminaTransazionePresente){
 }
 
 TEST_F(testFixture, testEliminaTransazioneNonPresente){
-    c.eliminaTransazione(100);
+    try {
+        c.eliminaTransazione(100);
+    }catch (const char* error) {
+        cout << error << endl;
+    }
 
     ASSERT_EQ(c.listaTransazioni.size(),3);
+    ASSERT_ANY_THROW(c.eliminaTransazione(100));
 }
 
 TEST_F(testFixture, testConciliaTransazione){

@@ -25,7 +25,7 @@ public:
 
     void aggiornaCSV ();
 
-//private:
+
     int idConto;
     tm dataApertura;
     string titolare;

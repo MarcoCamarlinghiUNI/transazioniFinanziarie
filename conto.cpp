@@ -99,7 +99,7 @@ void conto::eliminaTransazione(int idTransazioneDaEliminare) {
     aggiornaCSV();
 
     if(!transazioneEliminata)
-        cout<<"eccezione transazione non trovata?";
+        throw "Transazione non presente";
 }
 
 int conto::trovaProssimoIdTransazione() {

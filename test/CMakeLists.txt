@@ -4,6 +4,6 @@ add_subdirectory(./lib/googletest)
 set(gtest_SOURCE_DIR, ./lib/googletest)
 include_directories(${gtest_SOURCE_DIR}/googletest/include ${gtest_SOURCE_DIR})
 
-set(TEST_SOURCE_FILES runAllTests.cpp contoTest.cpp transazioneTest.cpp testFixture.cpp)
+set(TEST_SOURCE_FILES runAllTests.cpp transazioneTest.cpp testFixture.cpp)
 add_executable(runTFtests ${TEST_SOURCE_FILES})
 target_link_libraries(runTFtests gtest gtest_main core)
