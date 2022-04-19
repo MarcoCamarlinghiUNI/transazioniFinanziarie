@@ -177,7 +177,7 @@ test/lib/googletest/googletest/clean: test/lib/googletest/googletest/CMakeFiles/
 CMakeFiles/transazioniFinanziarie.dir/all: CMakeFiles/core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\transazioniFinanziarie.dir\build.make CMakeFiles/transazioniFinanziarie.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target transazioniFinanziarie"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles --progress-num=17,18 "Built target transazioniFinanziarie"
 .PHONY : CMakeFiles/transazioniFinanziarie.dir/all
 
 # Build rule for subdir invocation for target.
@@ -233,12 +233,12 @@ test/CMakeFiles/runTFtests.dir/all: test/lib/googletest/googletest/CMakeFiles/gt
 test/CMakeFiles/runTFtests.dir/all: test/lib/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\runTFtests.dir\build.make test/CMakeFiles/runTFtests.dir/depend
 	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\runTFtests.dir\build.make test/CMakeFiles/runTFtests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles --progress-num=12,13,14 "Built target runTFtests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles --progress-num=12,13,14,15,16 "Built target runTFtests"
 .PHONY : test/CMakeFiles/runTFtests.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/runTFtests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/CMakeFiles/runTFtests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie\cmake-build-debug\CMakeFiles 0
 .PHONY : test/CMakeFiles/runTFtests.dir/rule

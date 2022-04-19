@@ -1,5 +1,4 @@
 "C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\marco\Desktop\LaboratorioDiProgrammazione\codiceSerio\transazioniFinanziarie
--- Found Python: C:/Users/marco/AppData/Local/Programs/Python/Python39/python.exe (found version "3.9.7") found components: Interpreter 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/cmake-build-debug

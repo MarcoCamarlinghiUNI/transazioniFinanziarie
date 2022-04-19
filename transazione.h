@@ -10,7 +10,6 @@ using namespace std;
 class transazione {
 public:
     transazione();
-
     explicit transazione(int idTransazionez, int importoz, string contropartez, string dataContabilez,
                          string transazioneInUscitaFlagz, string transazioneConciliataFlagz);
     virtual ~transazione() = default;

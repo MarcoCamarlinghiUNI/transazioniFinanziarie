@@ -11,6 +11,7 @@ using namespace std;
 
 class conto {
 public:
+    conto(){};
     explicit conto(int id, string dataAperturaz, string titolarez);
     virtual ~conto() = default;
 

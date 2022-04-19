@@ -429,6 +429,12 @@
 		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/test/runAllTests.cpp">
 			<Option target="runTFtests"/>
 		</Unit>
+		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/test/testFixture.cpp">
+			<Option target="runTFtests"/>
+		</Unit>
+		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/test/transazioneTest.cpp">
+			<Option target="runTFtests"/>
+		</Unit>
 		<Unit filename="C:/Users/marco/Desktop/LaboratorioDiProgrammazione/codiceSerio/transazioniFinanziarie/transazione.cpp">
 			<Option target="core"/>
 		</Unit>
