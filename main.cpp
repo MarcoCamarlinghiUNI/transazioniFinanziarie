@@ -49,11 +49,15 @@ int main() {
 
 
 
-    c2.conciliaTransazione(c2.listaTransazioni[2]);
+    c2.aggiungiTransazione(10,"baratta","1");
 
-    c2.aggiungiTransazione(10,"gelato","0");
+    system("pause");
 
+    c2.modificaTransazione(6,99,"BarattaAntonio","0");
 
+    system("pause");
+
+    c2.eliminaTransazione(6);
 
     return 0;
 }

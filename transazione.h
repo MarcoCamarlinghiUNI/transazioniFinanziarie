@@ -10,12 +10,11 @@ using namespace std;
 class transazione {
 public:
     transazione();
-    explicit transazione(int idTransazionez, int importoz, string contropartez, string dataContabilez,
-                         string transazioneInUscitaFlagz, string transazioneConciliataFlagz);
-    virtual ~transazione() = default;
+    transazione(int idTransazionez, int importoz, const string &contropartez, const string &dataContabilez,
+                         const string &transazioneInUscitaFlagz, const string &transazioneConciliataFlagz);
 
-    tm convertiStringInData(string s);
-    static void setTransazioneConciliataFlag(transazione* t, bool b);
+    tm convertiStringInData(string s);      //passare per riferimento?
+    void setTransazioneConciliataFlag(bool b);
 
 
     int idTransazione;

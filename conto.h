@@ -12,26 +12,33 @@ using namespace std;
 class conto {
 public:
     conto(){};
-    explicit conto(int id, string dataAperturaz, string titolarez);
-    virtual ~conto() = default;
+    conto(int id, const string &dataAperturaz, const string &titolarez);
 
-    vector<transazione*> letturaTransazioni(int idContoz);
-    int trovaProssimoIdTransazione ();
-    tm convertiStringInData(string s);
 
-    transazione* aggiungiTransazione(int importoz, string contropartez, string transazioneInUscitaFlagz);
+
+    void aggiungiTransazione(int importoz, const string &contropartez, const string &transazioneInUscitaFlagz);
     void eliminaTransazione(int idTransazioneDaEliminare);
-    void conciliaTransazione(transazione* t);
+    void modificaTransazione(int id, int importoz, const string &contropartez, const string &transazioneInUscitaFlagz);
+    shared_ptr<transazione> cercaTransazionePerId(int idTransazione);
 
-    void aggiornaCSV ();
+
+    int getNumeroTransazioni();
+    int getBilancioTransazioni();
 
 
     int idConto;
     tm dataApertura;
     string titolare;
 
-    vector<transazione*> listaTransazioni;
+    //vector<transazione*> listaTransazioni;
+    list<shared_ptr<transazione>> elencoTransazioni;
     int prossimoIdTransazione;
+
+private:
+    void caricaDati();
+    void trovaProssimoIdTransazione ();
+    tm convertiStringInData(string s);
+    void salvaDati ();
 };
 
 

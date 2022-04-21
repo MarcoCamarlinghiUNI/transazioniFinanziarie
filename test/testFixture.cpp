@@ -16,44 +16,76 @@ public:
     }
 
     virtual void TearDown(){
-        std::string nomeDelFile = "0.csv";
+        std::string nomeDelFile = "0.csv";                    //////////// ma se creo direttamente il char?
         const char * nomeDelFileChar = nomeDelFile.c_str();
         remove(nomeDelFileChar);
     }
 };
 
 TEST_F(testFixture, testCostruttoreConto){
-    c.letturaTransazioni(0);
-    ASSERT_EQ(c.listaTransazioni.size(),3);
+
+    ASSERT_EQ(c.getNumeroTransazioni(),3);
     ASSERT_EQ(c.prossimoIdTransazione,4);
+    ASSERT_EQ(c.getBilancioTransazioni(),206);
 }
 
 TEST_F(testFixture, testAggiungiTransazione){
     c.aggiungiTransazione(10,"controparte1","1");
 
-    ASSERT_EQ(c.listaTransazioni.size(),4);
+    ASSERT_EQ(c.getNumeroTransazioni(),4);
     ASSERT_EQ(c.prossimoIdTransazione,5);
+    ASSERT_EQ(c.getBilancioTransazioni(),196);
+}
+
+TEST_F(testFixture, testCercaTransazionePresente){
+    shared_ptr<transazione> ptr = c.cercaTransazionePerId(3);
+
+    ASSERT_EQ(ptr->idTransazione, 3);
+}
+
+TEST_F(testFixture, testCercaTransazioneNonPresente){
+    try {
+        shared_ptr<transazione> ptr = c.cercaTransazionePerId(100);
+    } catch (const char*){
+
+    }
+
+    ASSERT_THROW(c.cercaTransazionePerId(100),const char*);
 }
 
 TEST_F(testFixture, testEliminaTransazionePresente){
     c.eliminaTransazione(2);
 
-    ASSERT_EQ(c.listaTransazioni.size(),2);
+    ASSERT_EQ(c.getNumeroTransazioni(),2);
+    ASSERT_EQ(c.getBilancioTransazioni(),140);
 }
 
 TEST_F(testFixture, testEliminaTransazioneNonPresente){
+    c.eliminaTransazione(100);
+
+    ASSERT_EQ(c.getNumeroTransazioni(),3);
+}
+
+TEST_F(testFixture, testModificaTransazionePresente){
+    c.modificaTransazione(3,15,"barattaPostTest","1");
+
+    ASSERT_EQ(c.getNumeroTransazioni(),3);
+    ASSERT_EQ(c.cercaTransazionePerId(3)->importo, 15);
+    ASSERT_EQ(c.getBilancioTransazioni(),105);
+}
+
+TEST_F(testFixture, testModificaTransazioneNonPresente){
     try {
-        c.eliminaTransazione(100);
-    }catch (const char* error) {
-        cout << error << endl;
+        c.modificaTransazione(100, 15, "barattaPostTest", "1");
+    }catch (const char*){
+
     }
 
-    ASSERT_EQ(c.listaTransazioni.size(),3);
-    ASSERT_ANY_THROW(c.eliminaTransazione(100));
+    ASSERT_ANY_THROW(c.modificaTransazione(100,15,"barattaPostTest","1"));
 }
 
 TEST_F(testFixture, testConciliaTransazione){
-    c.conciliaTransazione(c.listaTransazioni[0]);
+    c.elencoTransazioni.front()->setTransazioneConciliataFlag(1);
 
-    ASSERT_TRUE(c.listaTransazioni[0]->transazioneConciliataFlag);
+    ASSERT_TRUE(c.elencoTransazioni.front()->transazioneConciliataFlag);
 }

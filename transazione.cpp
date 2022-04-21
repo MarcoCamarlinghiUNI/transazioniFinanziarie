@@ -1,8 +1,7 @@
 #include "transazione.h"
 
-transazione::transazione(int idTransazionez, int importoz, string contropartez, string dataContabilez,
-                         string transazioneInUscitaFlagz,
-                         string transazioneConciliataFlagz) {
+transazione::transazione(int idTransazionez, int importoz, const string &contropartez, const string &dataContabilez,
+                         const string &transazioneInUscitaFlagz, const string &transazioneConciliataFlagz) {
     idTransazione = idTransazionez;
     importo = importoz;
     controparte = contropartez;
@@ -39,8 +38,8 @@ tm transazione::convertiStringInData(string s) {
     return data;
 }
 
-void transazione::setTransazioneConciliataFlag(transazione* t, bool b) {
-    t->transazioneConciliataFlag = b;
+void transazione::setTransazioneConciliataFlag( bool b) {
+    transazioneConciliataFlag = b;
 }
 
 transazione::transazione() {}

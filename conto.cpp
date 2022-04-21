@@ -1,12 +1,12 @@
 #include "conto.h"
 
-conto::conto(int id, string dataAperturaz, string titolarez) {
+conto::conto(int id, const string &dataAperturaz, const string &titolarez) {
     idConto = id;
     dataApertura = convertiStringInData(dataAperturaz);
     titolare = titolarez;
 
-    listaTransazioni = letturaTransazioni(idConto);
-    prossimoIdTransazione = trovaProssimoIdTransazione();
+    caricaDati();
+    trovaProssimoIdTransazione();
 }
 
 tm conto::convertiStringInData(string s) {
@@ -27,11 +27,9 @@ tm conto::convertiStringInData(string s) {
     return data;
 }
 
-vector<transazione*> conto::letturaTransazioni(int idContoz) {
-    vector<transazione*> v;
-
+void conto::caricaDati() {
     string contoDaVisualizzareNomeFile;
-    contoDaVisualizzareNomeFile.append(to_string(idContoz));
+    contoDaVisualizzareNomeFile.append(to_string(idConto));
     contoDaVisualizzareNomeFile.append(".csv");
 
     vector<vector<string>> contoDaVisualizzareVettore;
@@ -52,80 +50,75 @@ vector<transazione*> conto::letturaTransazioni(int idContoz) {
 
     for ( int i = 0; i<contoDaVisualizzareVettore.size(); i++)
     {
-        v.push_back(new transazione(stoi(contoDaVisualizzareVettore[i][0]), stoi(contoDaVisualizzareVettore[i][1]),
-                                    contoDaVisualizzareVettore[i][2], contoDaVisualizzareVettore[i][3],
-                                    contoDaVisualizzareVettore[i][4], contoDaVisualizzareVettore[i][5]));
+        shared_ptr<transazione> ptr (new transazione(stoi(contoDaVisualizzareVettore[i][0]), stoi(contoDaVisualizzareVettore[i][1]),
+                                                     contoDaVisualizzareVettore[i][2], contoDaVisualizzareVettore[i][3],
+                                                     contoDaVisualizzareVettore[i][4], contoDaVisualizzareVettore[i][5]));
+        elencoTransazioni.push_back(ptr);
     }
 
     contoDaVisualizzareFile.close();
-
-    return v;
 }
 
-transazione *conto::aggiungiTransazione(int importoz, string contropartez, string transazioneInUscitaFlagz) {
-    transazione* t = new transazione;
-    t->idTransazione = prossimoIdTransazione;
-    t->importo = importoz;
-    t->controparte = contropartez;
-    if (transazioneInUscitaFlagz == "1"){
-        t->transazioneInUscitaFlag = true;
-    } else {
-        t->transazioneInUscitaFlag = false;
-    }
-    t->transazioneConciliataFlag = false;
+void conto::aggiungiTransazione(int importoz, const string &contropartez, const string &transazioneInUscitaFlagz) {
 
-    time_t now = time(0);
-    tm* localtm = localtime(&now);
-    t->dataContabile.tm_year = localtm->tm_year + 1900;
-    t->dataContabile.tm_mon = localtm->tm_mon;
-    t->dataContabile.tm_mday = localtm->tm_mday;
+    shared_ptr<transazione> ptr = make_shared<transazione>();
+    ptr->idTransazione = prossimoIdTransazione;
+    ptr->importo = importoz;
+    ptr->controparte = contropartez;
+    if (transazioneInUscitaFlagz == "1"){
+        ptr->transazioneInUscitaFlag = true;
+    } else {
+        ptr->transazioneInUscitaFlag = false;
+    }
+    ptr->transazioneConciliataFlag = false;
+
+    time_t now1 = time(0);
+    tm* localtm1 = localtime(&now1);
+    ptr->dataContabile.tm_year = localtm1->tm_year + 1900;
+    ptr->dataContabile.tm_mon = localtm1->tm_mon + 1;
+    ptr->dataContabile.tm_mday = localtm1->tm_mday;
+
+    elencoTransazioni.push_back(ptr);
 
     prossimoIdTransazione++;
-    listaTransazioni.push_back(t);
 
-    aggiornaCSV();
-    return listaTransazioni[listaTransazioni.size()-1];
+    salvaDati();
 }
 
 void conto::eliminaTransazione(int idTransazioneDaEliminare) {
-    bool transazioneEliminata = false;
-    for(int i = 0; i<listaTransazioni.size(); i++){
-        if(idTransazioneDaEliminare == listaTransazioni[i]->idTransazione){
-            listaTransazioni.erase(listaTransazioni.begin()+i);
-            transazioneEliminata = true;
-        }
+    try {
+        elencoTransazioni.remove(cercaTransazionePerId(idTransazioneDaEliminare));
+    } catch (const char* error) {
+        cout << error << endl;
     }
 
-    aggiornaCSV();
-
-    if(!transazioneEliminata)
-        throw "Transazione non presente";
+    salvaDati();
 }
 
-int conto::trovaProssimoIdTransazione() {
+void conto::trovaProssimoIdTransazione() {
     int prossimoId = 1;
 
-    for (auto & i : listaTransazioni){
-        if(i->idTransazione > prossimoId)
-            prossimoId = i->idTransazione;
+    for (auto & transazione : elencoTransazioni){
+        if(transazione->idTransazione > prossimoId)
+            prossimoId = transazione->idTransazione;
     }
-    return prossimoId+1;
+
+    prossimoIdTransazione = prossimoId + 1;
 }
 
-void conto::aggiornaCSV() {
+void conto::salvaDati() {
     // crea un csv con la lista delle transazioni
     std::ofstream myfile;
     myfile.open ("nuovoCSV.csv");
-    for ( int r=0; r<listaTransazioni.size(); r++){
-        myfile << listaTransazioni[r]->idTransazione<<",";
-        myfile << listaTransazioni[r]->importo<<",";
-        myfile << listaTransazioni[r]->controparte<<",";
-        myfile << listaTransazioni[r]->dataContabile.tm_mday<<"-";
-        myfile << listaTransazioni[r]->dataContabile.tm_mon<<"-";
-        myfile << listaTransazioni[r]->dataContabile.tm_year<<",";
-        myfile << listaTransazioni[r]->transazioneInUscitaFlag<<",";
-        myfile << listaTransazioni[r]->transazioneConciliataFlag<<",\n";
-
+    for (auto & r : elencoTransazioni){
+        myfile << r->idTransazione<<",";
+        myfile << r->importo<<",";
+        myfile << r->controparte<<",";
+        myfile << r->dataContabile.tm_mday<<"-";
+        myfile << r->dataContabile.tm_mon<<"-";
+        myfile << r->dataContabile.tm_year<<",";
+        myfile << r->transazioneInUscitaFlag<<",";
+        myfile << r->transazioneConciliataFlag<<",\n";
     }
     myfile.close();
 
@@ -140,7 +133,44 @@ void conto::aggiornaCSV() {
     rename("nuovoCSV.csv", nomeDelFileChar);
 }
 
-void conto::conciliaTransazione(transazione *t) {
-    transazione::setTransazioneConciliataFlag(t,true);
-    aggiornaCSV();
+int conto::getNumeroTransazioni() {
+    return elencoTransazioni.size();
+}
+
+int conto::getBilancioTransazioni() {
+    int bilancio = 0;
+
+    for(auto& transazione : elencoTransazioni){
+        if (transazione->transazioneInUscitaFlag){
+            bilancio -= transazione->importo;
+        } else {
+            bilancio += transazione->importo;
+        }
+    }
+
+    return bilancio;
+}
+
+void conto::modificaTransazione(int id, int importoz, const string &contropartez, const string &transazioneInUscitaFlagz) {
+    shared_ptr<transazione> ptr = cercaTransazionePerId(id);
+
+    if (!ptr->transazioneConciliataFlag) {
+        ptr->importo = importoz;
+        ptr->controparte = contropartez;
+        ptr->transazioneInUscitaFlag = &transazioneInUscitaFlagz;
+
+        salvaDati();
+    } else {
+        throw "Transazione conciliata, impossibile modificare";
+    }
+}
+
+shared_ptr<transazione> conto::cercaTransazionePerId(int idTransazione) {
+    for(auto& transazione : elencoTransazioni){
+        if (idTransazione == transazione->idTransazione){
+            return transazione;
+        }
+    }
+
+    throw "Transazione non presente";
 }
