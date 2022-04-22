@@ -59,24 +59,24 @@ void conto::caricaDati() {
     contoDaVisualizzareFile.close();
 }
 
-void conto::aggiungiTransazione(int importoz, const string &contropartez, const string &transazioneInUscitaFlagz) {
+void conto::aggiungiTransazione(int importoz, const string &contropartez, const string &transazioneInUscitaz) {
 
     shared_ptr<transazione> ptr = make_shared<transazione>();
-    ptr->idTransazione = prossimoIdTransazione;
-    ptr->importo = importoz;
-    ptr->controparte = contropartez;
-    if (transazioneInUscitaFlagz == "1"){
-        ptr->transazioneInUscitaFlag = true;
+    ptr->setIdTransazione(prossimoIdTransazione);
+    ptr->setImporto(importoz);
+    ptr->setControparte(contropartez);
+    if (transazioneInUscitaz == "1"){
+        ptr->setTransazioneInUscita(true);
     } else {
-        ptr->transazioneInUscitaFlag = false;
+        ptr->setTransazioneInUscita(false);
     }
-    ptr->transazioneConciliataFlag = false;
+    ptr->setTransazioneConciliata(false);
 
     time_t now1 = time(0);
     tm* localtm1 = localtime(&now1);
-    ptr->dataContabile.tm_year = localtm1->tm_year + 1900;
-    ptr->dataContabile.tm_mon = localtm1->tm_mon + 1;
-    ptr->dataContabile.tm_mday = localtm1->tm_mday;
+    string data;
+    data.append(to_string(localtm1->tm_mday)+"-"+to_string(localtm1->tm_mon + 1)+"-"+to_string(localtm1->tm_year + 1900));
+    ptr->setDataContabile(data);
 
     elencoTransazioni.push_back(ptr);
 
@@ -99,8 +99,8 @@ void conto::trovaProssimoIdTransazione() {
     int prossimoId = 1;
 
     for (auto & transazione : elencoTransazioni){
-        if(transazione->idTransazione > prossimoId)
-            prossimoId = transazione->idTransazione;
+        if(transazione->getIdTransazione() > prossimoId)
+            prossimoId = transazione->getIdTransazione();
     }
 
     prossimoIdTransazione = prossimoId + 1;
@@ -111,14 +111,14 @@ void conto::salvaDati() {
     std::ofstream myfile;
     myfile.open ("nuovoCSV.csv");
     for (auto & r : elencoTransazioni){
-        myfile << r->idTransazione<<",";
-        myfile << r->importo<<",";
-        myfile << r->controparte<<",";
-        myfile << r->dataContabile.tm_mday<<"-";
-        myfile << r->dataContabile.tm_mon<<"-";
-        myfile << r->dataContabile.tm_year<<",";
-        myfile << r->transazioneInUscitaFlag<<",";
-        myfile << r->transazioneConciliataFlag<<",\n";
+        myfile << r->getIdTransazione()<<",";
+        myfile << r->getImporto()<<",";
+        myfile << r->getControparte()<<",";
+        myfile << r->getDataContabile().tm_mday<<"-";
+        myfile << r->getDataContabile().tm_mon<<"-";
+        myfile << r->getDataContabile().tm_year<<",";
+        myfile << r->getTransazioneInUscita()<<",";
+        myfile << r->getTransazioneConciliata()<<",\n";
     }
     myfile.close();
 
@@ -129,7 +129,7 @@ void conto::salvaDati() {
     const char * nomeDelFileChar = nomeDelFile.c_str();
     remove(nomeDelFileChar);
 
-    // rinomina il nuovv csv col nome di quello vecchio
+    // rinomina il nuovo csv col nome di quello vecchio
     rename("nuovoCSV.csv", nomeDelFileChar);
 }
 
@@ -141,36 +141,48 @@ int conto::getBilancioTransazioni() {
     int bilancio = 0;
 
     for(auto& transazione : elencoTransazioni){
-        if (transazione->transazioneInUscitaFlag){
-            bilancio -= transazione->importo;
+        if (transazione->getTransazioneInUscita()){
+            bilancio -= transazione->getImporto();
         } else {
-            bilancio += transazione->importo;
+            bilancio += transazione->getImporto();
         }
     }
 
     return bilancio;
 }
 
-void conto::modificaTransazione(int id, int importoz, const string &contropartez, const string &transazioneInUscitaFlagz) {
+void conto::modificaTransazione(int id, int importoz, const string &contropartez, const string &transazioneInUscitaz) {
     shared_ptr<transazione> ptr = cercaTransazionePerId(id);
 
-    if (!ptr->transazioneConciliataFlag) {
-        ptr->importo = importoz;
-        ptr->controparte = contropartez;
-        ptr->transazioneInUscitaFlag = &transazioneInUscitaFlagz;
+    if (!ptr->getTransazioneConciliata()) {
+        ptr->setImporto(importoz);
+        ptr->setControparte(contropartez);
+        ptr->setTransazioneInUscita(&transazioneInUscitaz);
 
         salvaDati();
     } else {
-        throw "Transazione conciliata, impossibile modificare";
+        throw logic_error("Transazione conciliata, impossibile modificare");
     }
 }
 
 shared_ptr<transazione> conto::cercaTransazionePerId(int idTransazione) {
     for(auto& transazione : elencoTransazioni){
-        if (idTransazione == transazione->idTransazione){
+        if (idTransazione == transazione->getIdTransazione()){
             return transazione;
         }
     }
 
-    throw "Transazione non presente";
+    throw out_of_range("Transazione non trovata");
+}
+
+int conto::getProssimoIdTransazione() {
+    return prossimoIdTransazione;
+}
+
+void conto::setidConto(int id) {
+    idConto = id;
+}
+
+void conto::setProssimoIdTransazione(int pid) {
+    prossimoIdTransazione = pid;
 }

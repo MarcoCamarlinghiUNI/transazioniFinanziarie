@@ -7,8 +7,8 @@ class testFixture : public ::testing::Test {
 public:
     conto c;
     virtual void SetUp() {
-        c.idConto = 0;
-        c.prossimoIdTransazione = 1;
+        c.setidConto(0);
+        c.setProssimoIdTransazione(1);
 
         c.aggiungiTransazione(54,"baratta","0");
         c.aggiungiTransazione(66,"baratta","0");
@@ -25,7 +25,7 @@ public:
 TEST_F(testFixture, testCostruttoreConto){
 
     ASSERT_EQ(c.getNumeroTransazioni(),3);
-    ASSERT_EQ(c.prossimoIdTransazione,4);
+    ASSERT_EQ(c.getProssimoIdTransazione(),4);
     ASSERT_EQ(c.getBilancioTransazioni(),206);
 }
 
@@ -33,24 +33,19 @@ TEST_F(testFixture, testAggiungiTransazione){
     c.aggiungiTransazione(10,"controparte1","1");
 
     ASSERT_EQ(c.getNumeroTransazioni(),4);
-    ASSERT_EQ(c.prossimoIdTransazione,5);
+    ASSERT_EQ(c.getProssimoIdTransazione(),5);
     ASSERT_EQ(c.getBilancioTransazioni(),196);
 }
 
 TEST_F(testFixture, testCercaTransazionePresente){
     shared_ptr<transazione> ptr = c.cercaTransazionePerId(3);
 
-    ASSERT_EQ(ptr->idTransazione, 3);
+    ASSERT_EQ(ptr->getIdTransazione(), 3);
 }
 
 TEST_F(testFixture, testCercaTransazioneNonPresente){
-    try {
-        shared_ptr<transazione> ptr = c.cercaTransazionePerId(100);
-    } catch (const char*){
 
-    }
-
-    ASSERT_THROW(c.cercaTransazionePerId(100),const char*);
+    ASSERT_THROW(c.cercaTransazionePerId(100),out_of_range);
 }
 
 TEST_F(testFixture, testEliminaTransazionePresente){
@@ -60,32 +55,21 @@ TEST_F(testFixture, testEliminaTransazionePresente){
     ASSERT_EQ(c.getBilancioTransazioni(),140);
 }
 
-TEST_F(testFixture, testEliminaTransazioneNonPresente){
-    c.eliminaTransazione(100);
-
-    ASSERT_EQ(c.getNumeroTransazioni(),3);
-}
-
 TEST_F(testFixture, testModificaTransazionePresente){
     c.modificaTransazione(3,15,"barattaPostTest","1");
 
     ASSERT_EQ(c.getNumeroTransazioni(),3);
-    ASSERT_EQ(c.cercaTransazionePerId(3)->importo, 15);
+    ASSERT_EQ(c.cercaTransazionePerId(3)->getImporto(), 15);
     ASSERT_EQ(c.getBilancioTransazioni(),105);
 }
 
 TEST_F(testFixture, testModificaTransazioneNonPresente){
-    try {
-        c.modificaTransazione(100, 15, "barattaPostTest", "1");
-    }catch (const char*){
 
-    }
-
-    ASSERT_ANY_THROW(c.modificaTransazione(100,15,"barattaPostTest","1"));
+    ASSERT_THROW(c.modificaTransazione(100,15,"barattaPostTest","1"),logic_error);
 }
 
 TEST_F(testFixture, testConciliaTransazione){
-    c.elencoTransazioni.front()->setTransazioneConciliataFlag(1);
+    c.cercaTransazionePerId(2)->setTransazioneConciliata(1);
 
-    ASSERT_TRUE(c.elencoTransazioni.front()->transazioneConciliataFlag);
+    ASSERT_TRUE(c.cercaTransazionePerId(2)->getTransazioneConciliata());
 }

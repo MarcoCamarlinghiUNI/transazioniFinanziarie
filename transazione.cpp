@@ -8,15 +8,15 @@ transazione::transazione(int idTransazionez, int importoz, const string &controp
     dataContabile = convertiStringInData(dataContabilez);
 
     if (transazioneInUscitaFlagz == "1"){
-        transazioneInUscitaFlag = true;
+        transazioneInUscita = true;
     } else {
-        transazioneInUscitaFlag = false;
+        transazioneInUscita = false;
     }
 
     if (transazioneConciliataFlagz == "1"){
-        transazioneConciliataFlag = true;
+        transazioneConciliata = true;
     } else {
-        transazioneConciliataFlag = false;
+        transazioneConciliata = false;
     }
 }
 
@@ -38,8 +38,52 @@ tm transazione::convertiStringInData(string s) {
     return data;
 }
 
-void transazione::setTransazioneConciliataFlag( bool b) {
-    transazioneConciliataFlag = b;
+void transazione::setTransazioneConciliata(bool b) {
+    transazioneConciliata = b;
 }
 
 transazione::transazione() {}
+
+void transazione::setImporto(int i) {
+    importo = i;
+}
+
+void transazione::setControparte(string c) {
+    controparte = c;
+}
+
+void transazione::setDataContabile(string d) {
+    dataContabile = convertiStringInData(d);
+}
+
+void transazione::setTransazioneInUscita(bool b) {
+    transazioneInUscita = b;
+}
+
+bool transazione::getTransazioneConciliata() {
+    return transazioneConciliata;
+}
+
+bool transazione::getTransazioneInUscita() {
+    return transazioneInUscita;
+}
+
+int transazione::getIdTransazione() {
+    return idTransazione;
+}
+
+int transazione::getImporto() {
+    return importo;
+}
+
+string transazione::getControparte() {
+    return controparte;
+}
+
+tm transazione::getDataContabile() {
+    return dataContabile;
+}
+
+void transazione::setIdTransazione(int i) {
+    idTransazione = i;
+}

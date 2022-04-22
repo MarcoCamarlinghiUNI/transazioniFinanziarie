@@ -11,18 +11,32 @@ class transazione {
 public:
     transazione();
     transazione(int idTransazionez, int importoz, const string &contropartez, const string &dataContabilez,
-                         const string &transazioneInUscitaFlagz, const string &transazioneConciliataFlagz);
+                         const string &transazioneInUscitaz, const string &transazioneConciliataz);
 
-    tm convertiStringInData(string s);      //passare per riferimento?
-    void setTransazioneConciliataFlag(bool b);
 
+    void setIdTransazione(int i);
+    void setImporto(int i);
+    void setControparte(string c);
+    void setDataContabile(string d);
+    void setTransazioneInUscita(bool b);
+    void setTransazioneConciliata(bool b);
+
+    int getIdTransazione();
+    int getImporto();
+    string getControparte();
+    tm getDataContabile();
+    bool getTransazioneInUscita();
+    bool getTransazioneConciliata();
+
+private:
+    tm convertiStringInData(string s);
 
     int idTransazione;
     int importo;
     string controparte;         // chi riceve o invia il denaro
     tm dataContabile;
-    bool transazioneInUscitaFlag;
-    bool transazioneConciliataFlag;
+    bool transazioneInUscita;
+    bool transazioneConciliata;
 };
 
 
